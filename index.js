@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const friendRoutes = require('./src/api/friends/friends.routes.js');
+const UserRoutes = require('./src/api/users/users.routes.js');
 
 
 const { bdConnect } = require('./src/utils/database/db');
@@ -32,6 +33,7 @@ app.use(express.json({
 app.use(express.urlencoded({limit: '5mb', extended: true}))  //Se asegura que lo que recibas sean urls con clave--valor(ej: name:Pepe, apellido:perez)
 
 app.use('/friends', friendRoutes);
+app.use('/users', UserRoutes);
 
 
 app.use('/', (req, res) => {
