@@ -1,3 +1,4 @@
+const passport = require('passport');
 const User = require('./user.models');
 
 const postRegister = (req, res, next) => {

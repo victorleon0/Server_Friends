@@ -1,6 +1,10 @@
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const passport = require("passport");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+require("./src/utils/auth/index");
 dotenv.config();
 
 const friendRoutes = require('./src/api/friends/friends.routes.js');
@@ -12,6 +16,7 @@ const { bdConnect } = require('./src/utils/database/db');
 const PORT = 4000; // Mi puerto
 
 const app = express();
+app.disable("x-powered-by");
 bdConnect();
 
 app.use((req, res, next) => {
@@ -25,6 +30,9 @@ app.use(cors({   //Definimos las rutas para las que damos permiso a acceder a nu
     origin: ['https://localhost:3000', 'https://localhost:4200', 'http://pepitoperez.com'],    //Implementamos el cors para poder conectarnos desde los puertos estandar de ANGULAR Y REACT
     credentials: true,
 }))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.json({
     limit: '5mb'            //Limitamos el tamaño máximo de nuestra petición
