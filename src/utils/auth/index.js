@@ -1,5 +1,5 @@
 const passport = require("passport");
-const User = require("../../api/users/user.model");
+const User = require("../../api/users/users.models.js");
 const loginStrategy = require("./loginStrategy");
 const registerStrategy = require("./registerStrategy");
 

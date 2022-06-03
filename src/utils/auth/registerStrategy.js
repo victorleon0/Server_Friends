@@ -1,6 +1,6 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
-const User = require("../../api/users/user.model");
+const User = require("../../api/users/users.models.js");
 const { validateEmail, validatePassword } = require("../helpers/validations");
 
 const saltRounds = 10;
@@ -17,6 +17,8 @@ const registerStrategy = new LocalStrategy(
      *
      * Si cumple con todo lo anterior, registraremos al usuario.
      */
+
+
     try {
       const existingUser = await User.findOne({ email: email.toLowerCase() });
 
@@ -41,12 +43,12 @@ const registerStrategy = new LocalStrategy(
       }
 
       const hash = await bcrypt.hash(password, saltRounds);
-      const user = new User({ ...req.body, email, password: hash });
+      const user = new User({ ...req.body, email, password: hash }); //contrqaseña encriptada
       const userDB = await user.save();
       userDB.password = null;
-      return done(null, userDB);
+      return done(null, userDB); // si todo va bien lanzamos la funcion done
     } catch (error) {
-      return done(error);
+      return done(error, null);
     }
   }
 );

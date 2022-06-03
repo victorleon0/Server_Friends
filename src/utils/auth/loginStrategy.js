@@ -1,6 +1,6 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
-const User = require("../../api/users/user.model");
+const User = require("../../api/users/users.models.js");
 const { validateEmail, validatePassword } = require("../helpers/validations");
 
 const loginStrategy = new LocalStrategy(
