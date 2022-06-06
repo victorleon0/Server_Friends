@@ -7,7 +7,8 @@ const friendSchema = new Schema({
     surname: {type: String, required: true, trim: true}, 
     phone: {type: Number, required: true, trim: true},
     adress: {type: String, required: false, trim: true},
-    image: {type: String, required: false, trim: true}
+    image: {type: String, required: false, trim: true},
+    image2: {type: String, required: false, trim: true}
 },
 {
     timestamps:true

@@ -6,6 +6,7 @@ const session = require("express-session"); //Instalamos Express session para el
 const MongoStore = require("connect-mongo"); // Instalamos connect mongo para la BBDD
 require("./src/utils/auth/index");  // Llamamos al archivo de index de la autorizacion.
 dotenv.config(); // Configuramos dotenv llamando a la fucnion config
+const cloudinary = require("cloudinary").v2; //
 
 const friendRoutes = require('./src/api/friends/friends.routes.js'); //Llamamos al archivo de rutas de amigos
 const UserRoutes = require('./src/api/users/users.routes.js'); //Llamamos al archivo de usuarios
@@ -14,6 +15,13 @@ const UserRoutes = require('./src/api/users/users.routes.js'); //Llamamos al arc
 const { bdConnect } = require('./src/utils/database/db'); //Llamamos al archivo de la BBDD
 
 const PORT = 4000; // Añadimos el puerto donde queramos que se ejecute
+
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+  });
+  
 
 const app = express(); // LLamamos a la funcion de la app
 app.disable("x-powered-by"); 
