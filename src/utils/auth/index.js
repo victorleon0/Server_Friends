@@ -3,7 +3,7 @@ const User = require("../../api/users/users.models.js");
 const loginStrategy = require("./loginStrategy");
 const registerStrategy = require("./registerStrategy");
 
-// Esta función usará el usuario de req.LogIn para registrar su id.
+// Esta función usará el usuario de req.LogIn para registrar su id id.
 passport.serializeUser((user, done) => {
   return done(null, user._id);
 });
