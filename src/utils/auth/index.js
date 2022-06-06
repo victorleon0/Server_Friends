@@ -1,5 +1,6 @@
 const passport = require("passport");
 const User = require("../../api/users/users.models.js");
+console.log(__dirname)
 const loginStrategy = require("./loginStrategy");
 const registerStrategy = require("./registerStrategy");
 

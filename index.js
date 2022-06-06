@@ -4,7 +4,7 @@ const dotenv = require("dotenv"); //Instalamos Dotenv
 const passport = require("passport"); //Instalamos passport para el registro y el login
 const session = require("express-session"); //Instalamos Express session para el registro y el login
 const MongoStore = require("connect-mongo"); // Instalamos connect mongo para la BBDD
-require("./src/utils/auth/index");  // Llamamos al archivo de index de la autorizacion.
+const checkAuth = require("./src/utils/auth/index");  // Llamamos al archivo de index de la autorizacion.
 dotenv.config(); // Configuramos dotenv llamando a la fucnion config
 const cloudinary = require("cloudinary").v2; //
 
